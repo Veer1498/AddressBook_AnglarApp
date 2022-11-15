@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonDetails } from 'src/app/model/person';
 import { Router } from '@angular/router';
+import { AddressBookService } from 'src/app/services/address-book.service';
 
 @Component({
   selector: 'app-add-person',
@@ -9,15 +10,19 @@ import { Router } from '@angular/router';
 })
 export class AddPersonComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(private route:Router,
+    private service:AddressBookService) { }
 
   ngOnInit(): void {
   }
   addPerson:PersonDetails=new PersonDetails("","","","","","","","");
   onSubmit(){
     console.log(this.addPerson)
-    alert("Contact Person Succesfully Added !!")
-    this.route.navigate([""])
+    this.service.addPerson(this.addPerson).subscribe((data:any) =>{
+      alert("Contact Person Succesfully Added !!")
+      console.log(data)
+      this.route.navigate([""])
+    })
   }
   public cityList = [
     { value: "Select City" },

@@ -24,13 +24,13 @@
              </tr>
           </thead>
           <tbody class="table-detail">
-            <tr>
-                <th>Fullname</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip Code</th>
-                <th>Phone Number</th>
+            <tr *ngFor="let person of list">
+                <th>{{person.firstName+" "+person.lastName}}</th>
+                <th>{{person.address}}</th>
+                <th>{{person.city}}</th>
+                <th>{{person.state}}</th>
+                <th>{{person.pin}}</th>
+                <th>{{person.phoneNo}}</th>
                 <th>
                     <div class="actions-icons">
                         <mat-icon >delete</mat-icon>
