@@ -25,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatIconModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
