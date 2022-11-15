@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonDetails } from 'src/app/model/person';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-person',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPersonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
+  addPerson:PersonDetails=new PersonDetails("","","","","","","","");
+  onSubmit(){
+    console.log(this.addPerson)
+    alert("Contact Person Succesfully Added !!")
+    this.route.navigate([""])
+  }
   public cityList = [
+    { value: "Select City" },
     { value: "Amaravati" },
     { value: "Itanagar" },
     { value: "Dispur" },
@@ -45,6 +54,7 @@ export class AddPersonComponent implements OnInit {
   ];
 
   public stateList = [
+    { value: "Select State" },
     { value: "Andhra Pradesh" },
     { value: "Arunachal Pradesh	" },
     { value: "Assam	" },
