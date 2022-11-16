@@ -5,6 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AddressBookService {
+  Cid:Number=0;
+  personData:any;
+  updateContactData(id: any, person: any) {
+    this.Cid = id;
+    this.personData = person;
+  }
 
   constructor(private http:HttpClient) { 
 
@@ -14,5 +20,12 @@ export class AddressBookService {
   }
   getList(){
     return this.http.get("http://localhost:8084/addressbook/getAll")
+  }
+
+  deleteContact(id:Number){
+    return this.http.delete("http://localhost:8084/addressbook/delete/"+id)
+  }
+  updateContact(id:Number,person:any){
+    return this.http.put("http://localhost:8084/addressbook/update/"+id,person)
   }
 }

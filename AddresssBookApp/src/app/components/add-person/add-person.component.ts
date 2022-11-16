@@ -14,15 +14,28 @@ export class AddPersonComponent implements OnInit {
     private service:AddressBookService) { }
 
   ngOnInit(): void {
+    if(this.service.Cid != 0){
+      this.addPerson = this.service.personData;
+    }
   }
   addPerson:PersonDetails=new PersonDetails("","","","","","","","");
   onSubmit(){
-    console.log(this.addPerson)
-    this.service.addPerson(this.addPerson).subscribe((data:any) =>{
-      alert("Contact Person Succesfully Added !!")
-      console.log(data)
-      this.route.navigate([""])
-    })
+    if(this.service.Cid != 0){
+      this.service.updateContact(this.service.Cid,this.service.personData).subscribe((data:any) =>{
+        this.route.navigate([""]);
+        this.service.updateContactData(0,null);
+      })
+
+    }
+    else{
+      console.log(this.addPerson)
+      this.service.addPerson(this.addPerson).subscribe((data:any) =>{
+        alert("Contact Person Succesfully Added !!")
+        console.log(data)
+        this.route.navigate([""])
+      })
+    }
+   
   }
   public cityList = [
     { value: "Select City" },
