@@ -33,8 +33,8 @@
                 <th>{{person.phoneNo}}</th>
                 <th>
                     <div class="actions-icons">
-                        <mat-icon >delete</mat-icon>
-                        <mat-icon>edit</mat-icon>
+                        <mat-icon id="{{person.contactId}}" (click)="onDelete(person.contactId)">delete</mat-icon>
+                        <mat-icon id="{{person.contactId}}" (click)="onUpdate(person.contactId,person)">edit</mat-icon>
                      </div>   
                 </th>
              </tr>
